@@ -1,0 +1,20 @@
+### EXAMPLES
+Q: List the titles of all albums by AC/DC.
+A: SELECT al.Title
+   FROM Album al
+   JOIN Artist ar ON al.ArtistId = ar.ArtistId
+   WHERE ar.Name = 'AC/DC';
+
+Q: Give the top 5 customers by total amount spent.
+A: SELECT c.FirstName || ' ' || c.LastName AS Customer, SUM(i.Total) AS TotalSpent
+   FROM Customer c
+   JOIN Invoice  i ON i.CustomerId = c.CustomerId
+   GROUP BY c.CustomerId
+   ORDER BY TotalSpent DESC
+   LIMIT 5;
+
+Q: Show me every album title.
+A: SELECT Title FROM Album;
+
+Q: Show every album title.
+A: SELECT Title FROM Album;

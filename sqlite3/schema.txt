@@ -1,0 +1,14 @@
+### SCHEMA
+TABLE Album        (AlbumId INTEGER PK, Title NVARCHAR(160), ArtistId INTEGER FK→Artist.ArtistId)
+TABLE Artist       (ArtistId INTEGER PK, Name NVARCHAR(120))
+TABLE Customer     (CustomerId INTEGER PK, FirstName NVARCHAR(40), ... Email NVARCHAR(60), SupportRepId INTEGER FK→Employee.EmployeeId)
+TABLE Employee     (EmployeeId INTEGER PK, LastName NVARCHAR(20), ...)
+TABLE Genre        (GenreId INTEGER PK, Name NVARCHAR(120))
+TABLE Invoice      (InvoiceId INTEGER PK, CustomerId INTEGER FK→Customer.CustomerId, InvoiceDate DATETIME, Total NUMERIC(10,2))
+TABLE InvoiceLine  (InvoiceLineId INTEGER PK, InvoiceId INTEGER FK→Invoice.InvoiceId, TrackId INTEGER FK→Track.TrackId, UnitPrice NUMERIC(10,2), Quantity INTEGER)
+TABLE MediaType    (MediaTypeId INTEGER PK, Name NVARCHAR(120))
+TABLE Playlist     (PlaylistId INTEGER PK, Name NVARCHAR(120))
+TABLE PlaylistTrack(PlaylistId INTEGER PK FK→Playlist.PlaylistId, TrackId INTEGER PK FK→Track.TrackId)
+TABLE Track        (TrackId INTEGER PK, Name NVARCHAR(200), AlbumId INTEGER FK→Album.AlbumId, MediaTypeId INTEGER FK→MediaType.MediaTypeId, GenreId INTEGER FK→Genre.GenreId, Composer NVARCHAR(220), Milliseconds INTEGER, Bytes INTEGER, UnitPrice NUMERIC(10,2))
+### END SCHEMA
+

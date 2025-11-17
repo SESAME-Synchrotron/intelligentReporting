@@ -1,0 +1,2 @@
+conda activate /PETRA/DCA/condaEnv/milp
+streamlit run stramLitApp.py 

@@ -1,0 +1,51 @@
+databases:
+  - name: sample DB
+    KGNameSpace: "http://www.Chinook.org/"
+    engine: sqlite3
+    description: "Sample database for testing purposes"
+    connection_details:
+      database_files:
+        - "./createSampleDB/sqlite3/Chinook.db"
+        # - "library.db"
+        # - "inventory.db"
+
+  # - name: PostgreSQL
+  #   engine: postgres
+  #   description: ""
+  #   connection_details:
+  #     host: "localhost"
+  #     port: 5432
+  #     username: "postgres"
+  #     password: "postgres"
+  #     database: "chinook"
+
+  # - name: PostgreSQLLLLL
+  #   engine: postgres
+  #   description: ""
+  #   connection_details:
+  #     host: "localhost"
+  #     port: 5432
+  #     username: "postgres"
+  #     password: "postgres"
+  #     database: "chinook"
+
+  # - name: MySQL
+  #   engine: mysql
+  #   description: ""
+  #   connection_details:
+  #     host: "localhost"
+  #     port: 3306
+  #     username: "root"
+  #     password: "example_password"
+  #     database: "school"
+    
+
+  # - name: MongoDB
+  #   engine: mongodb
+  #   description: ""
+  #   connection_details:
+  #     host: "localhost"
+  #     port: 27017
+  #     username: "mongo_user"
+  #     password: "mongo_password"
+  #     database: "school_db"

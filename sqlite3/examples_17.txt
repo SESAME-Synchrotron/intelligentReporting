@@ -1,0 +1,133 @@
+### EXAMPLES
+Q: List the titles of all albums by AC/DC.
+A: SELECT al.Title
+   FROM Album al
+   JOIN Artist ar ON al.ArtistId = ar.ArtistId
+   WHERE ar.Name = 'AC/DC';
+
+Q: Give the top 5 customers by total amount spent.
+A: SELECT c.FirstName || ' ' || c.LastName AS Customer, SUM(i.Total) AS TotalSpent
+   FROM Customer c
+   JOIN Invoice  i ON i.CustomerId = c.CustomerId
+   GROUP BY c.CustomerId
+   ORDER BY TotalSpent DESC
+   LIMIT 5;
+
+Q: Show me every album title.
+A: SELECT Title FROM Album;
+
+Q: List the names of all employees who have at least one customer assigned to them.
+A: SELECT DISTINCT e.FirstName || ' ' || e.LastName AS Employee
+   FROM Employee e
+   JOIN Customer  c ON c.SupportRepId = e.EmployeeId;
+
+Q: What are the five most expensive tracks (show name and unit price)?
+A: SELECT Name, UnitPrice
+   FROM Track
+   ORDER BY UnitPrice DESC
+   LIMIT 5;
+
+Q: Show the title and release-year (InvoiceDate year) of every album that was ever sold.
+A: SELECT DISTINCT al.Title,
+                  strftime('%Y', i.InvoiceDate) AS YearSold
+   FROM Album  al
+   JOIN Track  t  ON t.AlbumId  = al.AlbumId
+   JOIN InvoiceLine il ON il.TrackId  = t.TrackId
+   JOIN Invoice     i  ON i.InvoiceId = il.InvoiceId
+   ORDER BY YearSold, al.Title;
+
+Q: Find all genres that have more than 100 tracks.
+A: SELECT g.Name, COUNT(*) AS NumTracks
+   FROM Genre g
+   JOIN Track t ON t.GenreId = g.GenreId
+   GROUP BY g.GenreId
+   HAVING COUNT(*) > 100;
+
+Q: Give the average track length (in seconds) per album, ordered longest first.
+A: SELECT al.Title,
+          ROUND(AVG(t.Milliseconds) / 1000.0, 2) AS AvgSeconds
+   FROM Album al
+   JOIN Track t ON t.AlbumId = al.AlbumId
+   GROUP BY al.AlbumId
+   ORDER BY AvgSeconds DESC;
+
+Q: Which three customers have placed the most invoices?
+A: SELECT c.FirstName || ' ' || c.LastName AS Customer,
+          COUNT(*) AS NumInvoices
+   FROM Customer c
+   JOIN Invoice  i ON i.CustomerId = c.CustomerId
+   GROUP BY c.CustomerId
+   ORDER BY NumInvoices DESC
+   LIMIT 3;
+
+Q: Show every playlist that contains the track “Take a Chance On Me”.
+A: SELECT DISTINCT p.Name
+   FROM Playlist        p
+   JOIN PlaylistTrack pt ON pt.PlaylistId = p.PlaylistId
+   JOIN Track          t ON t.TrackId     = pt.TrackId
+   WHERE t.Name = 'Take a Chance On Me';
+
+Q: List tracks that are not in any playlist.
+A: SELECT t.Name
+   FROM Track t
+   LEFT JOIN PlaylistTrack pt ON pt.TrackId = t.TrackId
+   WHERE pt.TrackId IS NULL;
+
+Q: For each employee, show the total dollar amount of invoices from their customers.
+A: SELECT e.FirstName || ' ' || e.LastName AS Employee,
+          ROUND(SUM(i.Total), 2)          AS TotalSales
+   FROM Employee e
+   JOIN Customer c ON c.SupportRepId = e.EmployeeId
+   JOIN Invoice  i ON i.CustomerId   = c.CustomerId
+   GROUP BY e.EmployeeId
+   ORDER BY TotalSales DESC;
+
+Q: Retrieve all invoices from March 2011 (show InvoiceId and Total).
+A: SELECT InvoiceId, Total
+   FROM Invoice
+   WHERE InvoiceDate >= '2011-03-01'
+     AND InvoiceDate  < '2011-04-01';
+
+Q: Find the top 10 composers by the number of tracks they composed.
+A: SELECT COALESCE(Composer, 'Unknown') AS Composer,
+          COUNT(*)                      AS NumTracks
+   FROM Track
+   GROUP BY Composer
+   ORDER BY NumTracks DESC
+   LIMIT 10;
+
+Q: Show the total bytes of music purchased by each customer (only those over 1 GB).
+A: SELECT c.FirstName || ' ' || c.LastName AS Customer,
+          SUM(t.Bytes) / 1024 / 1024 / 1024.0 AS Gigabytes
+   FROM Customer     c
+   JOIN Invoice      i  ON i.CustomerId   = c.CustomerId
+   JOIN InvoiceLine  il ON il.InvoiceId   = i.InvoiceId
+   JOIN Track        t  ON t.TrackId      = il.TrackId
+   GROUP BY c.CustomerId
+   HAVING SUM(t.Bytes) > 1024 * 1024 * 1024   -- bytes in 1 GB
+   ORDER BY Gigabytes DESC;
+
+Q: What is the highest single invoice total, and which customer paid it?
+A: SELECT c.FirstName || ' ' || c.LastName AS Customer,
+          i.Total
+   FROM Invoice i
+   JOIN Customer c ON c.CustomerId = i.CustomerId
+   ORDER BY i.Total DESC
+   LIMIT 1;
+
+Q: List albums that contain tracks longer than 10 minutes.
+A: SELECT DISTINCT al.Title
+   FROM Album al
+   JOIN Track t ON t.AlbumId = al.AlbumId
+   WHERE t.Milliseconds > 10 * 60 * 1000
+   ORDER BY al.Title;
+
+Q: Show genres that generated more than \$10 000 in sales.
+A: SELECT g.Name,
+          ROUND(SUM(il.UnitPrice * il.Quantity), 2) AS Revenue
+   FROM Genre        g
+   JOIN Track        t  ON t.GenreId   = g.GenreId
+   JOIN InvoiceLine  il ON il.TrackId  = t.TrackId
+   GROUP BY g.GenreId
+   HAVING SUM(il.UnitPrice * il.Quantity) > 10000
+   ORDER BY Revenue DESC;

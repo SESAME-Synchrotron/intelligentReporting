@@ -1,0 +1,296 @@
+@prefix ns: <http://www.Chinook.org/> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<#AlbumTriplesMap> rr:logicalTable [ rr:tableName "Album" ] ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:column "ArtistId" ;
+                    rr:datatype xsd:integer ] ;
+            rr:predicate ns:ArtistId ],
+        [ rr:objectMap [ rr:column "AlbumId" ;
+                    rr:datatype xsd:integer ] ;
+            rr:predicate ns:AlbumId ],
+        [ rr:objectMap [ rr:column "Title" ;
+                    rr:datatype xsd:string ] ;
+            rr:predicate ns:Title ] ;
+    rr:subjectMap [ rr:class ns:Album ;
+            rr:template "http://www.Chinook.org/Album/{AlbumId}" ] .
+
+<#ArtistTriplesMap> rr:logicalTable [ rr:tableName "Artist" ] ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:column "Name" ;
+                    rr:datatype xsd:string ] ;
+            rr:predicate ns:Name ],
+        [ rr:objectMap [ rr:column "ArtistId" ;
+                    rr:datatype xsd:integer ] ;
+            rr:predicate ns:ArtistId ] ;
+    rr:subjectMap [ rr:class ns:Artist ;
+            rr:template "http://www.Chinook.org/Artist/{ArtistId}" ] .
+
+<#CustomerTriplesMap> rr:logicalTable [ rr:tableName "Customer" ] ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:column "Country" ;
+                    rr:datatype xsd:string ] ;
+            rr:predicate ns:Country ],
+        [ rr:objectMap [ rr:column "FirstName" ;
+                    rr:datatype xsd:string ] ;
+            rr:predicate ns:FirstName ],
+        [ rr:objectMap [ rr:column "LastName" ;
+                    rr:datatype xsd:string ] ;
+            rr:predicate ns:LastName ],
+        [ rr:objectMap [ rr:column "Email" ;
+                    rr:datatype xsd:string ] ;
+            rr:predicate ns:Email ],
+        [ rr:objectMap [ rr:column "Address" ;
+                    rr:datatype xsd:string ] ;
+            rr:predicate ns:Address ],
+        [ rr:objectMap [ rr:column "State" ;
+                    rr:datatype xsd:string ] ;
+            rr:predicate ns:State ],
+        [ rr:objectMap [ rr:column "CustomerId" ;
+                    rr:datatype xsd:integer ] ;
+            rr:predicate ns:CustomerId ],
+        [ rr:objectMap [ rr:column "PostalCode" ;
+                    rr:datatype xsd:string ] ;
+            rr:predicate ns:PostalCode ],
+        [ rr:objectMap [ rr:column "Company" ;
+                    rr:datatype xsd:string ] ;
+            rr:predicate ns:Company ],
+        [ rr:objectMap [ rr:column "Phone" ;
+                    rr:datatype xsd:string ] ;
+            rr:predicate ns:Phone ],
+        [ rr:objectMap [ rr:column "SupportRepId" ;
+                    rr:datatype xsd:integer ] ;
+            rr:predicate ns:SupportRepId ],
+        [ rr:objectMap [ rr:column "City" ;
+                    rr:datatype xsd:string ] ;
+            rr:predicate ns:City ],
+        [ rr:objectMap [ rr:column "Fax" ;
+                    rr:datatype xsd:string ] ;
+            rr:predicate ns:Fax ] ;
+    rr:subjectMap [ rr:class ns:Customer ;
+            rr:template "http://www.Chinook.org/Customer/{CustomerId}" ] .
+
+<#EmployeeTriplesMap> rr:logicalTable [ rr:tableName "Employee" ] ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:column "BirthDate" ;
+                    rr:datatype xsd:dateTime ] ;
+            rr:predicate ns:BirthDate ],
+        [ rr:objectMap [ rr:column "PostalCode" ;
+                    rr:datatype xsd:string ] ;
+            rr:predicate ns:PostalCode ],
+        [ rr:objectMap [ rr:column "Title" ;
+                    rr:datatype xsd:string ] ;
+            rr:predicate ns:Title ],
+        [ rr:objectMap [ rr:column "Country" ;
+                    rr:datatype xsd:string ] ;
+            rr:predicate ns:Country ],
+        [ rr:objectMap [ rr:column "HireDate" ;
+                    rr:datatype xsd:dateTime ] ;
+            rr:predicate ns:HireDate ],
+        [ rr:objectMap [ rr:column "Email" ;
+                    rr:datatype xsd:string ] ;
+            rr:predicate ns:Email ],
+        [ rr:objectMap [ rr:column "Phone" ;
+                    rr:datatype xsd:string ] ;
+            rr:predicate ns:Phone ],
+        [ rr:objectMap [ rr:column "Fax" ;
+                    rr:datatype xsd:string ] ;
+            rr:predicate ns:Fax ],
+        [ rr:objectMap [ rr:column "Address" ;
+                    rr:datatype xsd:string ] ;
+            rr:predicate ns:Address ],
+        [ rr:objectMap [ rr:column "LastName" ;
+                    rr:datatype xsd:string ] ;
+            rr:predicate ns:LastName ],
+        [ rr:objectMap [ rr:column "City" ;
+                    rr:datatype xsd:string ] ;
+            rr:predicate ns:City ],
+        [ rr:objectMap [ rr:column "EmployeeId" ;
+                    rr:datatype xsd:integer ] ;
+            rr:predicate ns:EmployeeId ],
+        [ rr:objectMap [ rr:column "ReportsTo" ;
+                    rr:datatype xsd:integer ] ;
+            rr:predicate ns:ReportsTo ],
+        [ rr:objectMap [ rr:column "FirstName" ;
+                    rr:datatype xsd:string ] ;
+            rr:predicate ns:FirstName ],
+        [ rr:objectMap [ rr:column "State" ;
+                    rr:datatype xsd:string ] ;
+            rr:predicate ns:State ] ;
+    rr:subjectMap [ rr:class ns:Employee ;
+            rr:template "http://www.Chinook.org/Employee/{EmployeeId}" ] .
+
+<#GenreTriplesMap> rr:logicalTable [ rr:tableName "Genre" ] ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:column "GenreId" ;
+                    rr:datatype xsd:integer ] ;
+            rr:predicate ns:GenreId ],
+        [ rr:objectMap [ rr:column "Name" ;
+                    rr:datatype xsd:string ] ;
+            rr:predicate ns:Name ] ;
+    rr:subjectMap [ rr:class ns:Genre ;
+            rr:template "http://www.Chinook.org/Genre/{GenreId}" ] .
+
+<#InvoiceLineTriplesMap> rr:logicalTable [ rr:tableName "InvoiceLine" ] ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:column "TrackId" ;
+                    rr:datatype xsd:integer ] ;
+            rr:predicate ns:TrackId ],
+        [ rr:objectMap [ rr:column "UnitPrice" ;
+                    rr:datatype xsd:decimal ] ;
+            rr:predicate ns:UnitPrice ],
+        [ rr:objectMap [ rr:column "InvoiceId" ;
+                    rr:datatype xsd:integer ] ;
+            rr:predicate ns:InvoiceId ],
+        [ rr:objectMap [ rr:column "InvoiceLineId" ;
+                    rr:datatype xsd:integer ] ;
+            rr:predicate ns:InvoiceLineId ],
+        [ rr:objectMap [ rr:column "Quantity" ;
+                    rr:datatype xsd:integer ] ;
+            rr:predicate ns:Quantity ] ;
+    rr:subjectMap [ rr:class ns:InvoiceLine ;
+            rr:template "http://www.Chinook.org/InvoiceLine/{InvoiceLineId}" ] .
+
+<#InvoiceTriplesMap> rr:logicalTable [ rr:tableName "Invoice" ] ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:column "InvoiceDate" ;
+                    rr:datatype xsd:dateTime ] ;
+            rr:predicate ns:InvoiceDate ],
+        [ rr:objectMap [ rr:column "BillingCountry" ;
+                    rr:datatype xsd:string ] ;
+            rr:predicate ns:BillingCountry ],
+        [ rr:objectMap [ rr:column "BillingState" ;
+                    rr:datatype xsd:string ] ;
+            rr:predicate ns:BillingState ],
+        [ rr:objectMap [ rr:column "BillingAddress" ;
+                    rr:datatype xsd:string ] ;
+            rr:predicate ns:BillingAddress ],
+        [ rr:objectMap [ rr:column "BillingPostalCode" ;
+                    rr:datatype xsd:string ] ;
+            rr:predicate ns:BillingPostalCode ],
+        [ rr:objectMap [ rr:column "Total" ;
+                    rr:datatype xsd:decimal ] ;
+            rr:predicate ns:Total ],
+        [ rr:objectMap [ rr:column "CustomerId" ;
+                    rr:datatype xsd:integer ] ;
+            rr:predicate ns:CustomerId ],
+        [ rr:objectMap [ rr:column "InvoiceId" ;
+                    rr:datatype xsd:integer ] ;
+            rr:predicate ns:InvoiceId ],
+        [ rr:objectMap [ rr:column "BillingCity" ;
+                    rr:datatype xsd:string ] ;
+            rr:predicate ns:BillingCity ] ;
+    rr:subjectMap [ rr:class ns:Invoice ;
+            rr:template "http://www.Chinook.org/Invoice/{InvoiceId}" ] .
+
+<#MediaTypeTriplesMap> rr:logicalTable [ rr:tableName "MediaType" ] ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:column "Name" ;
+                    rr:datatype xsd:string ] ;
+            rr:predicate ns:Name ],
+        [ rr:objectMap [ rr:column "MediaTypeId" ;
+                    rr:datatype xsd:integer ] ;
+            rr:predicate ns:MediaTypeId ] ;
+    rr:subjectMap [ rr:class ns:MediaType ;
+            rr:template "http://www.Chinook.org/MediaType/{MediaTypeId}" ] .
+
+<#PlaylistTrackTriplesMap> rr:logicalTable [ rr:tableName "PlaylistTrack" ] ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:column "PlaylistId" ;
+                    rr:datatype xsd:integer ] ;
+            rr:predicate ns:PlaylistId ] ;
+    rr:subjectMap [ rr:class ns:PlaylistTrack ;
+            rr:template "http://www.Chinook.org/PlaylistTrack/{PlaylistId}" ] .
+
+<#PlaylistTriplesMap> rr:logicalTable [ rr:tableName "Playlist" ] ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:column "PlaylistId" ;
+                    rr:datatype xsd:integer ] ;
+            rr:predicate ns:PlaylistId ],
+        [ rr:objectMap [ rr:column "Name" ;
+                    rr:datatype xsd:string ] ;
+            rr:predicate ns:Name ] ;
+    rr:subjectMap [ rr:class ns:Playlist ;
+            rr:template "http://www.Chinook.org/Playlist/{PlaylistId}" ] .
+
+<#TrackTriplesMap> rr:logicalTable [ rr:tableName "Track" ] ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:column "TrackId" ;
+                    rr:datatype xsd:integer ] ;
+            rr:predicate ns:TrackId ],
+        [ rr:objectMap [ rr:column "Name" ;
+                    rr:datatype xsd:string ] ;
+            rr:predicate ns:Name ],
+        [ rr:objectMap [ rr:column "MediaTypeId" ;
+                    rr:datatype xsd:integer ] ;
+            rr:predicate ns:MediaTypeId ],
+        [ rr:objectMap [ rr:column "Milliseconds" ;
+                    rr:datatype xsd:integer ] ;
+            rr:predicate ns:Milliseconds ],
+        [ rr:objectMap [ rr:column "Bytes" ;
+                    rr:datatype xsd:integer ] ;
+            rr:predicate ns:Bytes ],
+        [ rr:objectMap [ rr:column "UnitPrice" ;
+                    rr:datatype xsd:decimal ] ;
+            rr:predicate ns:UnitPrice ],
+        [ rr:objectMap [ rr:column "GenreId" ;
+                    rr:datatype xsd:integer ] ;
+            rr:predicate ns:GenreId ],
+        [ rr:objectMap [ rr:column "Composer" ;
+                    rr:datatype xsd:string ] ;
+            rr:predicate ns:Composer ],
+        [ rr:objectMap [ rr:column "AlbumId" ;
+                    rr:datatype xsd:integer ] ;
+            rr:predicate ns:AlbumId ] ;
+    rr:subjectMap [ rr:class ns:Track ;
+            rr:template "http://www.Chinook.org/Track/{TrackId}" ] .
+
+<#sqlite_sequenceTriplesMap> rr:logicalTable [ rr:tableName "sqlite_sequence" ] ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:column "name" ;
+                    rr:datatype xsd: ] ;
+            rr:predicate ns:name ],
+        [ rr:objectMap [ rr:column "seq" ;
+                    rr:datatype xsd: ] ;
+            rr:predicate ns:seq ] .
+
+ns:InvoiceLineTriplesMap rr:predicateObjectMap [ rr:objectMap [ rr:joinCondition [ rr:child "InvoiceId" ;
+                            rr:parent "InvoiceId" ] ;
+                    rr:parentTriplesMap ns:InvoiceTriplesMap ] ;
+            rr:predicate ns:InvoiceId_to_Invoice ],
+        [ rr:objectMap [ rr:joinCondition [ rr:child "TrackId" ;
+                            rr:parent "TrackId" ] ;
+                    rr:parentTriplesMap ns:TrackTriplesMap ] ;
+            rr:predicate ns:TrackId_to_Track ] .
+
+ns:PlaylistTrackTriplesMap rr:predicateObjectMap [ rr:objectMap [ rr:joinCondition [ rr:child "PlaylistId" ;
+                            rr:parent "PlaylistId" ] ;
+                    rr:parentTriplesMap ns:PlaylistTriplesMap ] ;
+            rr:predicate ns:PlaylistId_to_Playlist ],
+        [ rr:objectMap [ rr:joinCondition [ rr:child "TrackId" ;
+                            rr:parent "TrackId" ] ;
+                    rr:parentTriplesMap ns:TrackTriplesMap ] ;
+            rr:predicate ns:TrackId_to_Track ] .
+
+ns:AlbumTriplesMap rr:predicateObjectMap [ rr:objectMap [ rr:joinCondition [ rr:child "ArtistId" ;
+                            rr:parent "ArtistId" ] ;
+                    rr:parentTriplesMap ns:ArtistTriplesMap ] ;
+            rr:predicate ns:ArtistId_to_Artist ] .
+
+ns:CustomerTriplesMap rr:predicateObjectMap [ rr:objectMap [ rr:joinCondition [ rr:child "SupportRepId" ;
+                            rr:parent "EmployeeId" ] ;
+                    rr:parentTriplesMap ns:EmployeeTriplesMap ] ;
+            rr:predicate ns:SupportRepId_to_Employee ] .
+
+ns:InvoiceTriplesMap rr:predicateObjectMap [ rr:objectMap [ rr:joinCondition [ rr:child "CustomerId" ;
+                            rr:parent "CustomerId" ] ;
+                    rr:parentTriplesMap ns:CustomerTriplesMap ] ;
+            rr:predicate ns:CustomerId_to_Customer ] .
+
+ns:EmployeeTriplesMap rr:predicateObjectMap [ rr:objectMap [ rr:joinCondition [ rr:child "ReportsTo" ;
+                            rr:parent "EmployeeId" ] ;
+                    rr:parentTriplesMap ns:EmployeeTriplesMap ] ;
+            rr:predicate ns:ReportsTo_to_Employee ] .
+
+ns:TrackTriplesMap rr:predicateObjectMap [ rr:objectMap [ rr:joinCondition [ rr:child "GenreId" ;
+                            rr:parent "GenreId" ] ;
+                    rr:parentTriplesMap ns:GenreTriplesMap ] ;
+            rr:predicate ns:GenreId_to_Genre ],
+        [ rr:objectMap [ rr:joinCondition [ rr:child "AlbumId" ;
+                            rr:parent "AlbumId" ] ;
+                    rr:parentTriplesMap ns:AlbumTriplesMap ] ;
+            rr:predicate ns:AlbumId_to_Album ],
+        [ rr:objectMap [ rr:joinCondition [ rr:child "MediaTypeId" ;
+                            rr:parent "MediaTypeId" ] ;
+                    rr:parentTriplesMap ns:MediaTypeTriplesMap ] ;
+            rr:predicate ns:MediaTypeId_to_MediaType ] .
+
